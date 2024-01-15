@@ -9,11 +9,24 @@ def find_winners(matches: list[list[int]]) -> list[list[int]]:
         raise Exception("Sorry, the input matches are not correct.")
 
     players_defeats = {}
-    for winner, loser in matches:
-        players_defeats.setdefault(winner, 0)
+    for m in matches:
+        if m[0] not in players_defeats:
+            players_defeats[m[0]] = 0
+        else:
+            pass
 
-        players_defeats.setdefault(loser, 0)
-        players_defeats[loser] += 1
+        m[1]
+        if m[1] not in players_defeats:
+            players_defeats[m[1]] = 1
+        else:
+            players_defeats[m[1]] += 1
+
+    # another way; less lines, a little more runtime:
+    # for winner, loser in matches:
+    #     players_defeats.setdefault(winner, 0)
+
+    #     players_defeats.setdefault(loser, 0)
+    #     players_defeats[loser] += 1
 
     answer = [[], []]
     for player, defeat in players_defeats.items():
